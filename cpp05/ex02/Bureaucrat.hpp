@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:23 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:42:21 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/01 09:10:32 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include <stdexcept>
 #include <iostream>
-#include "AForm.cpp"
+// #include "AForm.cpp"
 
 class AForm;
 

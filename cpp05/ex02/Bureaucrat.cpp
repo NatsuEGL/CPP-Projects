@@ -6,12 +6,12 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:14 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:40:42 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/01 09:11:41 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Intern.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade) {
     std::cout << "Bureaucrat param Constructor !!" << std::endl;
@@ -69,7 +69,7 @@ std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
     return out;
 }
 
-void Bureaucrat::signForm(Form& form) {
+void Bureaucrat::signForm(AForm& form) {
     try {
         form.beSigned(*this);
         std::cout << name << " signed " << form.getName() << std::endl;
