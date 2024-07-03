@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:23 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/03 08:22:08 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/03 08:21:12 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 #include <string>
 #include <stdexcept>
 #include <iostream>
+// #include "AForm.cpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
     private:
@@ -43,7 +44,7 @@ class Bureaucrat {
         // Constructor and Destructor
         Bureaucrat();
         Bureaucrat(const std::string &name, int grade);
-        void signForm(Form& form);
+        void signForm(AForm& form);
         ~Bureaucrat();
 
         // Getter methods
@@ -54,7 +55,7 @@ class Bureaucrat {
         void incrementGrade();
         void decrementGrade();
     Bureaucrat& operator=(const Bureaucrat& N);
+      void executeForm(AForm const & form);
 };
-std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
-
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
 #endif

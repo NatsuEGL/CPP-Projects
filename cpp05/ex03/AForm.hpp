@@ -6,9 +6,57 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:23:27 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/03 08:21:43 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/01 08:33:59 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// #ifndef AFORM_HPP
+// #define AFORM_HPP
+
+// #include <iostream>
+// #include <string>
+// #include "Bureaucrat.hpp"
+
+
+// class AForm : public Bureaucrat{
+//     private:
+//         const std::string name;
+//         bool signedStatus;
+//         const int gradeSign;
+//         const int gradeExecute;
+//     public:
+//         AForm(const std::string& name, int gradeSign, int gradeExecute);
+//         AForm(const AForm& other);
+//         AForm& operator=(const AForm& other);
+//         ~AForm();
+
+//         const std::string& getName() const;
+//         bool isSigned() const;
+//         int getGradeSign() const;
+//         int getGradeExecute() const;
+
+//         void beSigned(const Bureaucrat& bureaucrat);
+
+//         class GradeTooHighException : public std::exception {
+//         public:
+//             const char* what() const throw() {
+//                 return "Grade too high!";
+//             }
+//         };
+
+//         class GradeTooLowException : public std::exception {
+//         public:
+//             const char* what() const throw() {
+//                 return "Grade too low!";
+//             }
+//         };
+
+// };
+
+// std::ostream& operator<<(std::ostream& out, const AForm& Aform);
+
+// #endif
+
 
 #ifndef AFORM_HPP
 #define AFORM_HPP

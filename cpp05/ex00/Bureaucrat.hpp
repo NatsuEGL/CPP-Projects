@@ -51,7 +51,7 @@ class Bureaucrat {
         void incrementGrade();
         void decrementGrade();
     Bureaucrat& operator=(const Bureaucrat& N);
-     friend std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 };
+std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
 
 #endif

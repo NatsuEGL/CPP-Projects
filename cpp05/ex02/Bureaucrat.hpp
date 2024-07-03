@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:23 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 09:10:32 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/03 08:21:31 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ class Bureaucrat {
         void incrementGrade();
         void decrementGrade();
     Bureaucrat& operator=(const Bureaucrat& N);
-     friend std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
       void executeForm(AForm const & form);
 };
 
