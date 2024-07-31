@@ -6,13 +6,14 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:44 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 07:48:15 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/31 08:00:06 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "Intern.hpp"
+#include "Form.hpp"
+
 
 int main() {
     try {

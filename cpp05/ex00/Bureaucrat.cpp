@@ -6,23 +6,26 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:27:31 by akaabi            #+#    #+#             */
-/*   Updated: 2024/06/03 09:30:52 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 08:55:07 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade) {
-    std::cout << "Bureaucrat param Constructor !!" << std::endl;
+    // std::cout << "Bureaucrat param Constructor !!" << std::endl;
     validateGrade(grade);
 }
 Bureaucrat::Bureaucrat(): name("Default"), grade(){
-    std::cout << "Bureaucrat Default Constructor !!" << std::endl;
+    // std::cout << "Bureaucrat Default Constructor !!" << std::endl;
+}
+Bureaucrat::Bureaucrat(const Bureaucrat& other){
+    *this = other;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& N)
 {
-    std::cout << "Bureaucrat Copy assignement operator !!" << std::endl;
+    // std::cout << "Bureaucrat Copy assignement operator !!" << std::endl;
     if (this != &N)
     {
         const_cast<std::string&> (this->name) = N.name;
@@ -33,7 +36,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& N)
 }
 
 Bureaucrat::~Bureaucrat() {
-    std::cout << "Bureaucrat Destructor !!" << std::endl;
+    // std::cout << "Bureaucrat Destructor !!" << std::endl;
 
 }
 
@@ -61,6 +64,16 @@ void Bureaucrat::validateGrade(int grade) {
     } else if (grade > 150) {
         throw GradeTooLowException();
     }
+    else 
+        this->grade = grade;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade is too low!";
 }
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {

@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 08:37:18 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:37:20 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:05:17 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 #include <fstream>
 
 class ShrubberyCreationForm : public AForm {
+    private:
+    std::string target;
 public:
     ShrubberyCreationForm(const std::string& target);
+    ShrubberyCreationForm();
     ShrubberyCreationForm(const ShrubberyCreationForm& other);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
     ~ShrubberyCreationForm();
@@ -26,4 +29,4 @@ public:
     void execute(Bureaucrat const & executor) const;
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif

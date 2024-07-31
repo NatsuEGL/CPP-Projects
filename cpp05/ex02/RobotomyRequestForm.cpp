@@ -6,35 +6,37 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 08:38:50 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:38:51 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:11:59 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-// Constructor
+
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : AForm("RobotomyRequestForm", 72, 45, target) {}
+    : AForm("RobotomyRequestForm", 72, 45, target) {
+        // std::cout << "constructor is here for ro" << std::endl;
 
-// Copy constructor
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
-    : AForm(other) {}
+    }
 
-// Assignment operator
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other){*this = other;}
+
+
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
     if (this != &other) {
-        AForm::operator=(other);
+        this->target = other.target;
     }
     return *this;
 }
 
-// Destructor
+
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-// execute method
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
     checkExecution(executor);
     std::cout << "Drilling noises..." << std::endl;
+    srand(time(NULL));
     if (std::rand() % 2) {
         std::cout << getTarget() << " has been robotomized successfully!" << std::endl;
     } else {

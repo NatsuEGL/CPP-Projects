@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:44 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:40:58 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:16:47 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int main() {
     try {
         Bureaucrat john("John", 1);
-        ShrubberyCreationForm shrubbery("home");
+        ShrubberyCreationForm shrubbery("slay");
         RobotomyRequestForm robotomy("target");
         PresidentialPardonForm pardon("target");
 

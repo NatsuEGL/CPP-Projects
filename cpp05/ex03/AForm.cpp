@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
@@ -6,13 +6,13 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:23:57 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 09:12:51 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/18 07:52:54 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-// Constructor
+
 AForm::AForm(const std::string& name, int gradeSign, int gradeExecute, const std::string& target)
     : name(name), signedStatus(false), gradeSign(gradeSign), gradeExecute(gradeExecute), target(target) {
     if (gradeSign < 1 || gradeExecute < 1)
@@ -21,22 +21,27 @@ AForm::AForm(const std::string& name, int gradeSign, int gradeExecute, const std
         throw GradeTooLowException();
 }
 
-// Copy constructor
-AForm::AForm(const AForm& other)
-    : name(other.name), signedStatus(other.signedStatus), gradeSign(other.gradeSign), gradeExecute(other.gradeExecute), target(other.target) {}
+AForm::AForm() : name("Default") , signedStatus(false) , gradeSign(150) , gradeExecute(150) {};
 
-// Assignment operator
+
+AForm::AForm(const AForm& other)
+    : name(other.name), signedStatus(false), gradeSign(other.gradeSign), gradeExecute(other.gradeExecute) {}
+
+
 AForm& AForm::operator=(const AForm& other) {
     if (this != &other) {
-        signedStatus = other.signedStatus;
+        const_cast<std::string&>(this->name) = other.name;
+        const_cast<int&>(this->gradeSign) = other.gradeSign;
+        const_cast<int&>(this->gradeExecute) = other.gradeExecute;
+        this->signedStatus = other.signedStatus;
     }
     return *this;
 }
 
-// Destructor
+
 AForm::~AForm() {}
 
-// Getters
+
 const std::string& AForm::getName() const {
     return name;
 }
@@ -57,7 +62,7 @@ const std::string& AForm::getTarget() const {
     return target;
 }
 
-// beSigned method
+
 void AForm::beSigned(const Bureaucrat& bureaucrat) {
     if (bureaucrat.getGrade() > gradeSign) {
         throw GradeTooLowException();
@@ -65,7 +70,7 @@ void AForm::beSigned(const Bureaucrat& bureaucrat) {
     signedStatus = true;
 }
 
-// checkExecution method
+
 void AForm::checkExecution(Bureaucrat const & executor) const {
     if (!isSigned()) {
         throw FormNotSignedException();
@@ -75,7 +80,18 @@ void AForm::checkExecution(Bureaucrat const & executor) const {
     }
 }
 
-// Overloaded insertion operator
+const char* AForm::GradeTooHighException::what() const throw() {
+    return "Grade is too high!";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+    return "Grade is too low!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+            return "Form not signed!";
+}
+
 std::ostream& operator<<(std::ostream& out, const AForm& form) {
     out << "Form: " << form.getName() << ", signed: " << form.isSigned()
         << ", grade required to sign: " << form.getGradeSign()

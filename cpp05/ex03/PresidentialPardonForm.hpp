@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 08:39:05 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/01 08:39:06 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 11:05:00 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 #include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm {
+    private :
+    std::string target;
 public:
     PresidentialPardonForm(const std::string& target);
+    PresidentialPardonForm();
     PresidentialPardonForm(const PresidentialPardonForm& other);
     PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
     ~PresidentialPardonForm();
@@ -25,4 +28,4 @@ public:
     void execute(Bureaucrat const & executor) const;
 };
 
-#endif // PRESIDENTIALPARDONFORM_HPP
+#endif

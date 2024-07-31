@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:25:44 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/03 08:16:29 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/31 08:23:11 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int main() {
     Intern someRandomIntern;
     AForm* rrf;
     
-    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+    rrf = someRandomIntern.makeForm("robotomy request", "ploto");
     if (rrf) {
         std::cout << *rrf << std::endl;
     }
 
-    rrf = someRandomIntern.makeForm("shrubbery creation", "Garden");
+    rrf = someRandomIntern.makeForm("shrubbery creation", "kaiden");
     if (rrf) {
         std::cout << *rrf << std::endl;
     }
 
-    rrf = someRandomIntern.makeForm("presidential pardon", "Arthur Dent");
+    rrf = someRandomIntern.makeForm("presidential pardon", "sung jin woo");
     if (rrf) {
         std::cout << *rrf << std::endl;
     }
 
-    rrf = someRandomIntern.makeForm("non-existent form", "Nowhere");
+    rrf = someRandomIntern.makeForm("non-existent form", "Natsu");
     if (rrf) {
         std::cout << *rrf << std::endl;
     }

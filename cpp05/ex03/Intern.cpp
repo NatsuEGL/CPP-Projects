@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:12:06 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/03 08:15:56 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 10:45:25 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Intern::Intern(const Intern& other) {
 
 Intern& Intern::operator=(const Intern& other) {
     if (this != &other) {
-        // Assign any necessary members here (if applicable)
     }
     return *this;
 }

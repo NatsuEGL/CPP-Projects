@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:23:27 by akaabi            #+#    #+#             */
-/*   Updated: 2024/07/03 08:21:43 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/07/28 12:02:59 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ private:
 public:
     AForm(const std::string& name, int gradeSign, int gradeExecute, const std::string& target);
     AForm(const AForm& other);
+    AForm();
     AForm& operator=(const AForm& other);
     virtual ~AForm();
 
@@ -41,32 +42,25 @@ public:
     void beSigned(const Bureaucrat& bureaucrat);
     virtual void execute(Bureaucrat const & executor) const = 0;
 
-    class GradeTooHighException : public std::exception {
-    public:
-        const char* what() const throw() {
-            return "Grade too high!";
-        }
-    };
+     class GradeTooHighException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+        };
 
-    class GradeTooLowException : public std::exception {
-    public:
-        const char* what() const throw() {
-            return "Grade too low!";
-        }
-    };
+        class GradeTooLowException : public std::exception {
+        public:
+            virtual const char* what() const throw();
+        };
 
     class FormNotSignedException : public std::exception {
     public:
-        const char* what() const throw() {
-            return "Form not signed!";
-        }
+        const char* what() const throw();
     };
 
-protected:
     void checkExecution(Bureaucrat const & executor) const;
 
 };
 
 std::ostream& operator<<(std::ostream& out, const AForm& form);
 
-#endif // AFORM_HPP
+#endif
