@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 08:00:13 by akaabi            #+#    #+#             */
-/*   Updated: 2024/08/05 08:31:51 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/08/09 08:41:47 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ public:
     ScalarConverter(const ScalarConverter&);
     ~ScalarConverter();
     ScalarConverter& operator=(const ScalarConverter &);
-    static void convert(const std::string& literal);
-    static void char_check(const std::string& literal);
-    static void int_check(const std::string& literal);
-    static void float_check(const std::string& literal);
-   static void double_check(const std::string& literal);
+    // static void convert(const std::string& literal);
+    static void convert( std::string literal);
+//     static void char_check(const std::string& literal);
+//     static void int_check(const std::string& literal);
+//     static void float_check(const std::string& literal);
+//    static void double_check(const std::string& literal);
 };
 
 #endif

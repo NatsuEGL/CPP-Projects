@@ -6,15 +6,11 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 09:36:45 by akaabi            #+#    #+#             */
-/*   Updated: 2024/08/07 09:58:11 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/08/09 08:39:17 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-
-Base* generate();
-void identify(Base* p);
-void identify(Base& p);
 
 int main() {
     Base* ptr = generate();

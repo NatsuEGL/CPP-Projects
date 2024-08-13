@@ -6,28 +6,28 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:01:07 by akaabi            #+#    #+#             */
-/*   Updated: 2024/08/06 20:03:33 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/08/09 08:27:44 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
 int main() {
-    Data data;
-    data.data = 42;
-    // data.text = "Hello, World!";
+    Data S;
+    S.data = 42;
+    // std::cout << &S.data << std::endl;
 
-    uintptr_t raw = Serializer::serialize(&data);
+    uintptr_t raw = Serializer::serialize(&S);
+    // std::cout << &raw << std::endl;
     Data* dataPtr = Serializer::deserialize(raw);
 
-    if (dataPtr == &data) {
+    if (dataPtr == &S) {
         std::cout << "Serialization and deserialization successful!" << std::endl;
         std::cout << "nbr: " << dataPtr->data << std::endl;
-        // std::cout << "Text: " << dataPtr->text << std::endl;
     } else {
         std::cout << "Serialization and deserialization failed!" << std::endl;
     }
-    std::cout << dataPtr << std::endl;
+    // std::cout << dataPtr << std::endl;
 
     return 0;
 }

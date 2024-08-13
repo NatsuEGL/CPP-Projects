@@ -6,7 +6,7 @@
 /*   By: akaabi <akaabi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 08:00:16 by akaabi            #+#    #+#             */
-/*   Updated: 2024/08/05 08:56:10 by akaabi           ###   ########.fr       */
+/*   Updated: 2024/08/09 09:51:27 by akaabi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,194 +24,109 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter&)
 
 ScalarConverter::~ScalarConverter(){};
 
-void ScalarConverter::char_check(const std::string& literal)
+int checking_str(std::string literal)
 {
-     if (literal.length() == 1 && !isdigit(literal[0]))
-     {
-        char a = literal[0];
-        std::cout << "char: '" << a << "'" << std::endl;
-     }
+	if ((!std::isdigit(literal[0]) && literal.length() == 1))
+		return 1;
+	int len = literal.length();
+	int j = 0;
+	int i = 0;
+	if (literal[i] == '-' || literal[i] == '+')
+		i++;
+	while (i < len)
+	{
+		if (literal[i] == '.')
+			j++;
+			i++;
+	}
+	if (j == 1 && literal[len - 1] == 'f')
+		return 2;
+	i = 0;
+	if (literal[i] == '-' || literal[i] == '+')
+		i++;
+	while (i < len)
+	{
+		if (!std::isdigit(literal[i]) && literal[i] != '.')
+			return (0);
+			i++;
+	}
+	if (j > 1)
+		return (0);
+	return 1;
 }
-void ScalarConverter::int_check(const std::string& literal){
-        long j;
-    if (literal.length() == 1)
-    {
-        j = static_cast<int>(literal[0]);
-        std::cout << "int: ";
-           std::cout  << j << std::endl;
-    }
-    else 
-    {std::stringstream ss;
-        ss.str(literal);
-        ss >>  j;
-        std::cout << "char: ";
-        if (j > INT_MAX || j < INT_MIN)
-            std::cout << "impossible" << std::endl;
-        else if (isprint(j))
-            std::cout << "'" << static_cast<char>(j) << "'" << std::endl;
-        else
-            std::cout << "Non displayable" << std::endl;
-        std::cout << "int: ";
-         if (j > INT_MAX || j < INT_MIN)
-            std::cout << "impossible" << std::endl;
-        else
-           std::cout  << j << std::endl;
-    }     
+	
+double convertingstring(const std::string &s) {
+    std::istringstream ss(s);
+    double result;
+    ss >> result;
+	if (ss.fail())
+		std::cout << "char : impossible" << std::endl;
+    return result;
 }
 
-void ScalarConverter::float_check(const std::string& literal)
-{
-     std::stringstream ss;
-        double j;
-    if (literal.length() == 1)
-    {
-        j = static_cast<int>(literal[0]);
-        std::cout << "float: ";
-           std::cout  << j << ".0f"<< std::endl;
-    }
-    else
-    {
-        // std::cout <<"salam";
-        ss.str(literal);
-        ss >> j;
-        // std::cout << "char: ";
-        // if (j > FLT_MAX || j < FLT_MIN)
-        //     std::cout << "impossible" << std::endl;
-        // else if (isprint(static_cast<int>(j)))
-        //     std::cout << "'" << static_cast<char>(j) << "'" << std::endl;
-        // else
-        //     std::cout << "Non displayable" << std::endl;
-        // std::cout << "int: " << static_cast<int>(j) << std::endl;
-        std::cout << "float: ";
-        if (j > FLT_MAX || j < FLT_MIN)
-            std::cout << "impossible" << std::endl;
-        else if (j == static_cast<int>(j))
-          std::cout  << j << ".0f"<< std::endl;
-        else 
-          std::cout  << static_cast<float>(j) << std::endl;
-        
-    }
-}
-void ScalarConverter::double_check(const std::string& literal)
-{
-    double d;
-     if (literal.length() == 1)
-    {
-        d = static_cast<int>(literal[0]);
-        std::cout << "double: ";
-           std::cout  << d << ".0"<< std::endl;
-    }
-    else
-    {
-    d = std::stod(literal);
-        // std::cout << "char: ";
-        // if (isprint(static_cast<int>(d)))
-        //     std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
-        // else
-        //     std::cout << "Non displayable" << std::endl;
-        // std::cout << "int: " << static_cast<int>(d) << std::endl;
-        // std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-         if (d == static_cast<int>(d))
-            std::cout << "double: " << d << ".0"<<std::endl;
-        else
-            std::cout << "double: " << d << std::endl;
-        
-    }
-}
-void ScalarConverter::convert(const std::string& literal) {
-    
-    if (literal == "+inff" || literal == "+inf") {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: +inff" << std::endl;
-        std::cout << "double: +inf" << std::endl;
-        return;
-    } else if (literal == "-inff" || literal == "-inf") {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        std::cout << "float: -inff" << std::endl;
-        std::cout << "double: -inf" << std::endl;
-        return;
-    } else if (literal == "nanf" || literal == "nan") {
+void ScalarConverter::convert( std::string literal) {
+	if (literal == "nan" || literal == "nanf") {
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: nanf" << std::endl;
         std::cout << "double: nan" << std::endl;
-        return;
+		return ;
     }
-    // try {
-    //     // Convert to char
-    //     if (literal.length() == 1 && !isdigit(literal[0])) {
-    //         char c = literal[0];
-    //         std::cout << "char: '" << c << "'" << std::endl;
-    //         std::cout << "int: " << static_cast<int>(c) << std::endl;
-    //         std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-    //         std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
-    //         // return;
-    //     }
-    char_check(literal);
-    int_check(literal);
-    float_check(literal);
-    double_check(literal);
-        // Convert to int
-        // std::stringstream ss;
-        // ss.str(literal);
-        // long j;
-        // ss >>  j;
-        // std::cout << "char: ";
-        // if (j > INT_MAX || j < INT_MIN)
-        //     std::cout << "impossible" << std::endl;
-        // else if (isprint(j))
-        //     std::cout << "'" << static_cast<char>(j) << "'" << std::endl;
-        // else
-        //     std::cout << "Non displayable" << std::endl;
-        // std::cout << "int: ";
-        //  if (j > INT_MAX || j < INT_MIN)
-        //     std::cout << "impossible" << std::endl;
-        // else 
-        //     std::cout  << j << std::endl;
-        // std::cout << "float: " << static_cast<float>(j) << ".0f" << std::endl;
-        // std::cout << "double: " << static_cast<double>(j) << ".0" << std::endl;
-        // return;
-    // } catch (std::invalid_argument& e) {}
+	if (literal == "+inf" || literal == "+inff") {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: +inff" << std::endl;
+        std::cout << "double: +inf" << std::endl;
+		return ;
+    }
+	if (literal == "-inf" || literal == "-inff") {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: -inff" << std::endl;
+        std::cout << "double: -inf" << std::endl;
+		return ;
+    }
 
-    // try {
-    //     // Convert to float
-    //     std::stringstream ss;
-    //     // std::cout <<"salam";
-    //     ss.str(literal);
-    //     double j;
-    //     ss >> j;
-    //     // std::cout << "char: ";
-    //     // if (j > FLT_MAX || j < FLT_MIN)
-    //     //     std::cout << "impossible" << std::endl;
-    //     // else if (isprint(static_cast<int>(j)))
-    //     //     std::cout << "'" << static_cast<char>(j) << "'" << std::endl;
-    //     // else
-    //     //     std::cout << "Non displayable" << std::endl;
-    //     // std::cout << "int: " << static_cast<int>(j) << std::endl;
-    //     std::cout << "float: ";
-    //     if (j > FLT_MAX || j < FLT_MIN)
-    //         std::cout << "impossible" << std::endl;
-    //     else 
-    //       std::cout  << j << std::endl;
-    //     // std::cout << "double: " << static_cast<double>(j) << std::endl;
-    //     // return;
-    // } catch (std::invalid_argument& e) {}
-
-    // try {
-    //     // Convert to double
-    //     double d = std::stod(literal);
-    //     // std::cout << "char: ";
-    //     // if (isprint(static_cast<int>(d)))
-    //     //     std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
-    //     // else
-    //     //     std::cout << "Non displayable" << std::endl;
-    //     // std::cout << "int: " << static_cast<int>(d) << std::endl;
-    //     // std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
-    //     std::cout << "double: " << d << std::endl;
-    //     // return;
-    // } catch (std::invalid_argument& e) {}
-
-    // Handle special cases: +inff, -inff, nanf, +inf, -inf, nan
+	double str = 0;
+	int len = literal.length();
+	if (checking_str(literal) == 2)
+		literal = literal.substr(0,len - 1);
+	if (!checking_str(literal))
+	{
+		std::cout << "char : impossible" << std::endl;
+		std::cout << "int : impossible" << std::endl;
+		std::cout << "float : impossible" << std::endl;
+		std::cout << "double : impossible" << std::endl;	
+		return ;
+	}
+	if (!std::isdigit(literal[0]) && literal.length() == 1)
+		str = static_cast<double>(literal[0]);
+	else	
+	  str= convertingstring(literal);
+	//char
+	if ((std::isprint(static_cast<int>(str)) && str == static_cast<long>(str)))
+		std::cout << "char : '" << static_cast<char>(str)<<  "'" <<std::endl;
+	else if (!std::isprint(static_cast<int>(str)))
+		std::cout << "char : Non displayable" << std::endl;
+	else 
+		std::cout << "char : impossible" << std::endl;
+	//int 
+	if (static_cast<long>(str) > INT_MAX || static_cast<long>(str) < INT_MIN)
+		std::cout << "int : impossible" << std::endl;
+	else
+		std::cout << "int : " << static_cast<int>(str)<< std::endl;
+	//float 
+	if ( str > 0 && (str > FLT_MAX || str < FLT_MIN))
+		std::cout  << "float : impossible"  <<std::endl;
+	else if (str < 0 && (str < -FLT_MAX || str > -FLT_MIN))
+		std::cout << "float : impossible" << std::endl;
+	else  if (abs(str) - abs(static_cast<long long>(str)) == 0)
+		std::cout << "float : " << static_cast<float>(str) << ".0f"<< std::endl;
+	else	
+		std::cout << "float : " << static_cast<float>(str) << "f"<< std::endl;
+	//double 
+	if (str == static_cast<long>(str))
+		std::cout  << "double : " << str << ".0"<<std::endl;
+	else	
+		std::cout << "double : " << str << std::endl;
 }
